@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+@extends('layouts/app')
+
+@section('content') 
     <h1>marketplace</h1>
-    <p>hier gaan er diertjes gekocht en verkocht worden</p>
-</body>
-</html>
+    <a href="/market/nft">X</a>
+
+    @component('components/button')
+        @message('type') primary @endmessage
+        Mint this Nft
+    @endcomponent
+
+@endsection

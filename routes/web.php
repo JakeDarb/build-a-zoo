@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MarketController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('market');
 });
+
 
 Route::get('/users', function () {
     $users = \DB::table('users')->get();
@@ -34,24 +37,22 @@ Route::get('/signup', function () {
 // -----------------------
 
 // User routes
-Route::get('/profile', function () {
-    return view('users/profile');
-});
 
-Route::get('/profile/collection', function () {
-    return view('users/collection');
-});
+Route::get('/profile/create', [UserController::class, 'create']);
 
-Route::get('/profile/collection/detail', function () {
-    return view('users/detail');
-});
+Route::get('/profile/store', [UserController::class, 'store']);
+
+Route::get('/profile', [UserController::class, 'index']);
+
+Route::get('/profile/collection', [UserController::class, 'show']);
+
+
 // -----------------------
 
 // Market routes
-Route::get('/market', function () {
-    return view('market/index');
-});
-Route::get('/market/detail', function () {
-    return view('market/detail');
-});
+Route::get('/market', [MarketController::class, 'index']);
+
+Route::get('/market/{nft}', [MarketController::class, 'show']);
+
 // -----------------------
+
