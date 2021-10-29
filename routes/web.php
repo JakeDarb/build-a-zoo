@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MarketController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +16,34 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('market');
 });
+
+// Authentication routes
+Route::get('/login', function () {
+    return view('auth/login');
+});
+
+Route::get('/signup', function () {
+    return view('auth/signup');
+});
+// -----------------------
+
+// User routes
+Route::get('/profile/create', [UserController::class, 'create']);
+
+Route::get('/profile/store', [UserController::class, 'store']);
+
+Route::get('/profile', [UserController::class, 'index']);
+
+Route::get('/profile/collection', [UserController::class, 'show']);
+
+
+// -----------------------
+
+// Market routes
+Route::get('/market', [MarketController::class, 'index']);
+
+Route::get('/market/{nft}', [MarketController::class, 'show']);
+
+// -----------------------
