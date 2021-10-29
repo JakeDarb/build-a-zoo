@@ -17,6 +17,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/users', function () {
+    $users = \DB::table('users')->get();
+    $data['users'] = $users;
+    return view('users/index', $data);
+});
+
 // Authentication routes
 Route::get('/login', function () {
     return view('auth/login');
