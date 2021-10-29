@@ -13,6 +13,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(10)->create();
+        \App\Models\Type::factory(5)->create();
+        //\App\Models\Region::factory(5)->create();
+        //\App\Models\Nft::factory(15)->create();
+        //\App\Models\User::factory(10)->create();
+        /*$this->call([
+            NftSeeder::class
+        ]);*/
+
     }
 }
